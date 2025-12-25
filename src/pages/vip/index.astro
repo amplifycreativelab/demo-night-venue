@@ -1,0 +1,134 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionHeader from "../../components/SectionHeader.astro";
+import VIPForm from "../../components/VIPForm.astro";
+---
+
+<BaseLayout title="VIP Booths | Venue Nights | Exclusive Bottle Service">
+    <section class="py-12 md:py-20">
+        <div class="container mx-auto px-4">
+            <SectionHeader
+                title="VIP Experience"
+                subtitle="Elevate your night with a private booth and premium service."
+            />
+
+            <div
+                class="grid md:grid-cols-2 gap-16 items-start max-w-6xl mx-auto"
+            >
+                <!-- Info Column -->
+                <div>
+                    <div class="prose prose-invert mb-12">
+                        <h3
+                            class="text-3xl font-heading text-white mb-6 uppercase tracking-wide"
+                        >
+                            Why Go VIP?
+                        </h3>
+                        <p
+                            class="text-brand-text-secondary leading-relaxed mb-8"
+                        >
+                            Experience Venue Nights like a rockstar. Our VIP
+                            booths offer the ultimate in privacy, comfort, and
+                            service. perfect for birthdays, hens nights, or just
+                            because you deserve it.
+                        </p>
+                    </div>
+
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4">
+                            <div
+                                class="bg-brand-surface p-3 rounded-full border border-brand-accent/20"
+                            >
+                                <svg
+                                    class="w-6 h-6 text-brand-accent"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    ><path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
+                                    ></path></svg
+                                >
+                            </div>
+                            <div>
+                                <h4
+                                    class="text-white font-heading text-lg tracking-wide uppercase mb-1"
+                                >
+                                    Priority Entry
+                                </h4>
+                                <p class="text-sm text-brand-text-muted">
+                                    Skip the queue with your entire group.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div
+                                class="bg-brand-surface p-3 rounded-full border border-brand-accent/20"
+                            >
+                                <svg
+                                    class="w-6 h-6 text-brand-accent"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    ><path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h-5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                                    ></path></svg
+                                >
+                            </div>
+                            <div>
+                                <h4
+                                    class="text-white font-heading text-lg tracking-wide uppercase mb-1"
+                                >
+                                    Private Booth
+                                </h4>
+                                <p class="text-sm text-brand-text-muted">
+                                    Exclusive seating area for up to 12 guests.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div
+                                class="bg-brand-surface p-3 rounded-full border border-brand-accent/20"
+                            >
+                                <svg
+                                    class="w-6 h-6 text-brand-accent"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    ><path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+                                    ></path></svg
+                                >
+                            </div>
+                            <div>
+                                <h4
+                                    class="text-white font-heading text-lg tracking-wide uppercase mb-1"
+                                >
+                                    Bottle Service
+                                </h4>
+                                <p class="text-sm text-brand-text-muted">
+                                    Wide selection of premium spirits and
+                                    mixers.
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Form Column -->
+                <div
+                    class="bg-brand-surface/50 p-1 rounded-sm border border-brand-border"
+                >
+                    <VIPForm />
+                </div>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

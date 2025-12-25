@@ -1,0 +1,69 @@
+---
+import FormInput from "./FormInput.astro";
+import FormTextarea from "./FormTextarea.astro";
+import Button from "./Button.astro";
+---
+
+<form
+    class="space-y-6 bg-brand-bg border border-brand-border p-8 rounded shadow-2xl relative overflow-hidden"
+    action="#"
+    method="POST"
+>
+    <div
+        class="absolute top-0 right-0 w-64 h-64 bg-brand-accent/5 rounded-full blur-3xl -z-10 pointer-events-none"
+    >
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <FormInput
+            id="vip-name"
+            name="name"
+            label="Full Name"
+            placeholder="e.g. Sarah Smith"
+            required
+        />
+        <FormInput
+            id="vip-email"
+            name="email"
+            label="Email Address"
+            type="email"
+            placeholder="e.g. sarah@example.com"
+            required
+        />
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <FormInput
+            id="vip-date"
+            name="date"
+            label="Preferred Date"
+            type="date"
+            required
+        />
+        <FormInput
+            id="vip-guests"
+            name="guests"
+            label="Number of Guests"
+            type="number"
+            placeholder="e.g. 6"
+            required
+        />
+    </div>
+
+    <FormTextarea
+        id="vip-message"
+        name="message"
+        label="Special Requests / Bottle Service"
+        placeholder="Tell us about the occasion..."
+    />
+
+    <div class="pt-4">
+        <Button type="submit" variant="primary" size="lg" class="w-full">
+            Request VIP Access
+        </Button>
+        <p class="text-xs text-brand-text-muted text-center mt-4">
+            Our VIP team will contact you within 24 hours to confirm your
+            reservation.
+        </p>
+    </div>
+</form>

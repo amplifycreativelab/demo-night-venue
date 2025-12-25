@@ -1,0 +1,20 @@
+---
+interface Props {
+    label: string;
+    variant?: "outline" | "solid";
+    class?: string;
+}
+
+const { label, variant = "outline", class: className } = Astro.props;
+
+const variants = {
+    outline: "border border-brand-accent text-brand-accent",
+    solid: "bg-brand-accent text-white",
+};
+---
+
+<span
+    class={`inline-block px-3 py-1 text-xs font-heading tracking-wider uppercase rounded-sm ${variants[variant]} ${className}`}
+>
+    {label}
+</span>

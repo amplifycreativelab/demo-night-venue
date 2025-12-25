@@ -1,0 +1,300 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import EventCard from "../components/EventCard.astro";
+import Card from "../components/Card.astro";
+import events from "../data/events.json";
+
+const upcomingEvents = events
+    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+    .slice(0, 3);
+
+import { Image } from "astro:assets";
+import heroBg from "../assets/images/home-hero.webp";
+import neonDemon from "../assets/images/cocktail-neon-demon.webp";
+import midnightSour from "../assets/images/cocktail-midnight-sour.webp";
+import velvetRope from "../assets/images/cocktail-velvet-rope.webp";
+---
+
+<BaseLayout title="Venue Nights | Perth Nightclub & Bar">
+    <!-- Hero Section -->
+    <section
+        class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden"
+    >
+        <!-- Video Placeholder / Background -->
+        <div class="absolute inset-0 bg-brand-bg z-0">
+            <!-- Gradient Overlay -->
+            <div
+                class="absolute inset-0 bg-gradient-to-b from-brand-bg/60 via-brand-bg/40 to-brand-bg z-10"
+            >
+            </div>
+            <!-- Placeholder for Video -->
+            <!-- Background Image -->
+            <Image
+                src={heroBg}
+                alt="Venue Nights Atmosphere"
+                class="absolute inset-0 w-full h-full object-cover opacity-50"
+            />
+        </div>
+
+        <div class="container mx-auto px-4 relative z-20 text-center">
+            <h1
+                class="text-7xl md:text-9xl font-heading text-white mb-6 tracking-widest uppercase drop-shadow-2xl animate-fade-in-up"
+            >
+                Venue <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-purple-400"
+                    >Nights</span
+                >
+            </h1>
+            <p
+                class="text-xl md:text-3xl text-brand-text-secondary mb-12 max-w-3xl mx-auto font-light tracking-wide"
+            >
+                Late nights. Live DJs. Signature cocktails.
+            </p>
+            <div
+                class="flex flex-col md:flex-row gap-6 justify-center items-center"
+            >
+                <Button
+                    href="/bar-night-venue/events"
+                    variant="primary"
+                    size="lg">View Events</Button
+                >
+                <Button href="/bar-night-venue/vip" variant="outline" size="lg"
+                    >Book VIP Booth</Button
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Events -->
+    <section class="py-20 bg-brand-bg relative">
+        <div class="container mx-auto px-4">
+            <SectionHeader
+                title="What's On"
+                subtitle="Don't miss out on Perth's biggest nights."
+            />
+
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
+            >
+                {upcomingEvents.map((event) => <EventCard {...event} />)}
+            </div>
+
+            <div class="text-center">
+                <Button href="/bar-night-venue/events" variant="secondary"
+                    >View All Events</Button
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- Signature Cocktails -->
+    <section
+        class="py-20 bg-brand-surface border-y border-white/5 relative overflow-hidden"
+    >
+        <div class="absolute inset-0 bg-brand-accent/5 pointer-events-none">
+        </div>
+        <div class="container mx-auto px-4 relative">
+            <SectionHeader
+                title="Signature Sips"
+                subtitle="Crafted by our expert mixologists."
+            />
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <Card
+                    class="bg-black/20 backdrop-blur-sm border-white/10 group"
+                >
+                    <div
+                        class="h-64 mb-6 bg-brand-bg rounded overflow-hidden relative"
+                    >
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"
+                        >
+                        </div>
+                        <!-- In real app, image here -->
+                        <Image
+                            src={neonDemon}
+                            alt="Neon Demon Cocktail"
+                            class="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
+                        />
+                    </div>
+                    <h3 class="text-2xl font-heading text-white mb-2">
+                        Neon Demon
+                    </h3>
+                    <p class="text-brand-text-secondary text-sm mb-4">
+                        Vodka, Blue Curacao, Lemon, Electric Dust.
+                    </p>
+                    <span class="text-brand-accent font-heading text-xl"
+                        >$22</span
+                    >
+                </Card>
+
+                <Card
+                    class="bg-black/20 backdrop-blur-sm border-white/10 group"
+                >
+                    <div
+                        class="h-64 mb-6 bg-brand-bg rounded overflow-hidden relative"
+                    >
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"
+                        >
+                        </div>
+                        <Image
+                            src={midnightSour}
+                            alt="Midnight Sour Cocktail"
+                            class="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
+                        />
+                    </div>
+                    <h3 class="text-2xl font-heading text-white mb-2">
+                        Midnight Sour
+                    </h3>
+                    <p class="text-brand-text-secondary text-sm mb-4">
+                        Whisky, Blackberry Liqueur, Egg White, Charcoal.
+                    </p>
+                    <span class="text-brand-accent font-heading text-xl"
+                        >$24</span
+                    >
+                </Card>
+
+                <Card
+                    class="bg-black/20 backdrop-blur-sm border-white/10 group"
+                >
+                    <div
+                        class="h-64 mb-6 bg-brand-bg rounded overflow-hidden relative"
+                    >
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"
+                        >
+                        </div>
+                        <Image
+                            src={velvetRope}
+                            alt="Velvet Rope Cocktail"
+                            class="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
+                        />
+                    </div>
+                    <h3 class="text-2xl font-heading text-white mb-2">
+                        Velvet Rope
+                    </h3>
+                    <p class="text-brand-text-secondary text-sm mb-4">
+                        Gin, Elderflower, Rose Water, Prosecco Top.
+                    </p>
+                    <span class="text-brand-accent font-heading text-xl"
+                        >$20</span
+                    >
+                </Card>
+            </div>
+        </div>
+    </section>
+
+    <!-- VIP Teaser -->
+    <section
+        class="py-24 relative flex items-center bg-brand-bg overflow-hidden"
+    >
+        <!-- Abstract background shapes -->
+        <div
+            class="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-l from-brand-accent/10 to-transparent skew-x-12 transform origin-top-right"
+        >
+        </div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-2xl">
+                <h2
+                    class="text-5xl md:text-7xl font-heading text-white uppercase mb-6 leading-none"
+                >
+                    Elevate <br /><span class="text-brand-accent"
+                        >Your Night</span
+                    >
+                </h2>
+                <p
+                    class="text-xl text-brand-text-secondary mb-8 font-light border-l-2 border-brand-accent pl-6"
+                >
+                    Experience Venue Nights from the comfort of your own private
+                    booth. Priority entry, dedicated service, and premium bottle
+                    packages.
+                </p>
+                <Button href="/bar-night-venue/vip" variant="primary" size="lg"
+                    >Explore VIP</Button
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- Location / Info -->
+    <section class="py-20 bg-brand-surface border-t border-white/5">
+        <div
+            class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center"
+        >
+            <div>
+                <SectionHeader title="Find Us" align="left" class="mb-8" />
+                <div class="space-y-6 text-brand-text-secondary">
+                    <div class="flex items-start gap-4">
+                        <svg
+                            class="w-6 h-6 text-brand-accent mt-1"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            ><path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                            ></path><path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                            ></path></svg
+                        >
+                        <div>
+                            <h4
+                                class="text-white font-heading text-lg uppercase"
+                            >
+                                Venue Nights
+                            </h4>
+                            <p>123 Murray Street, Perth WA 6000</p>
+                            <p class="text-sm text-brand-text-muted mt-1">
+                                Heart of the CBD
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <svg
+                            class="w-6 h-6 text-brand-accent mt-1"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            ><path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                            ></path></svg
+                        >
+                        <div>
+                            <h4
+                                class="text-white font-heading text-lg uppercase"
+                            >
+                                Opening Hours
+                            </h4>
+                            <p>Thu: 8pm — 2am</p>
+                            <p>Fri - Sat: 9pm — 4am</p>
+                            <p>Sun: 8pm — 12am</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="h-80 bg-brand-bg border border-white/10 rounded overflow-hidden relative"
+            >
+                <!-- Map Placeholder -->
+                <div
+                    class="w-full h-full bg-brand-surface flex items-center justify-center text-brand-text-muted"
+                >
+                    <!-- TODO: Add Map Image -->
+                    Map Placeholder
+                </div>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

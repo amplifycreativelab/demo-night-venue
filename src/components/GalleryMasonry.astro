@@ -1,0 +1,98 @@
+---
+import { Image } from "astro:assets";
+import gallery1 from "../assets/images/gallery-1.webp";
+import gallery2 from "../assets/images/gallery-2.webp";
+import gallery3 from "../assets/images/gallery-3.webp";
+import gallery4 from "../assets/images/gallery-4.webp"; // Cocktails/Vibe
+import gallery5 from "../assets/images/gallery-5.webp";
+
+// We can map them if we want, or just use variables inline
+---
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px]">
+    <div
+        class="col-span-2 row-span-2 relative group overflow-hidden bg-brand-surface border border-white/5"
+    >
+        <Image
+            src={gallery1}
+            alt="Crowd dancing"
+            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+        <div
+            class="absolute inset-0 bg-gradient-to-br from-brand-accent/20 to-brand-bg/50"
+        >
+        </div>
+        <div
+            class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        >
+            <span
+                class="font-heading text-2xl text-white tracking-widest uppercase border-b-2 border-brand-accent pb-1"
+                >Crowd</span
+            >
+        </div>
+    </div>
+
+    <div
+        class="col-span-1 relative group overflow-hidden bg-brand-surface border border-white/5"
+    >
+        <Image
+            src={gallery2}
+            alt="DJ Deck"
+            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+        <div
+            class="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-brand-bg/20"
+        >
+        </div>
+    </div>
+
+    <div
+        class="col-span-1 relative group overflow-hidden bg-brand-surface border border-white/5"
+    >
+        <Image
+            src={gallery3}
+            alt="Nightclub Vibe"
+            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+        <div
+            class="absolute inset-0 bg-gradient-to-br from-pink-900/20 to-brand-bg/20"
+        >
+        </div>
+    </div>
+
+    <div
+        class="col-span-1 row-span-2 relative group overflow-hidden bg-brand-surface border border-white/5"
+    >
+        <Image
+            src={gallery4}
+            alt="Cocktails"
+            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+        <div
+            class="absolute inset-0 bg-gradient-to-br from-purple-900/20 to-brand-bg/50"
+        >
+        </div>
+        <div
+            class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        >
+            <span
+                class="font-heading text-xl text-white tracking-widest uppercase border-b-2 border-brand-accent pb-1"
+                >Cocktails</span
+            >
+        </div>
+    </div>
+
+    <div
+        class="col-span-2 relative group overflow-hidden bg-brand-surface border border-white/5"
+    >
+        <Image
+            src={gallery5}
+            alt="Laser Lights"
+            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+        <div
+            class="absolute inset-0 bg-gradient-to-br from-indigo-900/20 to-brand-bg/20"
+        >
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+    --color-brand-bg: #0B0B0F;
+    --color-brand-surface: #12121A;
+    --color-brand-border: rgba(255, 255, 255, 0.06);
+    --color-brand-text: #F2F2F5;
+    --color-brand-text-secondary: #B4B4C0;
+    --color-brand-text-muted: #7C7C8A;
+    --color-brand-accent: #9B5CFF;
+    /* Electric Purple */
+
+    --font-heading: 'Bebas Neue', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+@layer base {
+    body {
+        @apply bg-brand-bg text-brand-text font-body antialiased overflow-x-hidden selection:bg-brand-accent selection:text-white;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-heading uppercase tracking-wide;
+    }
+}

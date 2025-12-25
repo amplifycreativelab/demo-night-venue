@@ -1,0 +1,17 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionHeader from "../../components/SectionHeader.astro";
+import GalleryMasonry from "../../components/GalleryMasonry.astro";
+---
+
+<BaseLayout title="Gallery | Venue Nights | Photos">
+    <section class="py-12 md:py-20">
+        <div class="container mx-auto px-4">
+            <SectionHeader
+                title="The Vibe"
+                subtitle="Spotted at Venue Nights."
+            />
+            <GalleryMasonry />
+        </div>
+    </section>
+</BaseLayout>

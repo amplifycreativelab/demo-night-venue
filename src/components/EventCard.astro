@@ -1,0 +1,125 @@
+---
+import Card from "./Card.astro";
+import Badge from "./Badge.astro";
+import Button from "./Button.astro";
+
+import { Image } from "astro:assets";
+
+interface Props {
+    id: string;
+    title: string;
+    date: string;
+    time: string;
+    genre: string;
+    image?: string;
+    featured?: boolean;
+}
+
+const { id, title, date, time, genre, image, featured } = Astro.props;
+
+// Load images eagerly
+const images = import.meta.glob<{ default: ImageMetadata }>(
+    "/src/assets/images/*.{jpeg,jpg,png,gif,svg,webp}",
+    { eager: true },
+);
+const imagePath = image ? `/src/assets/images/${image}` : null;
+const imageData =
+    imagePath && images[imagePath] ? images[imagePath].default : null;
+
+const dateObj = new Date(date);
+const day = dateObj.toLocaleDateString("en-US", { day: "2-digit" });
+const month = dateObj
+    .toLocaleDateString("en-US", { month: "short" })
+    .toUpperCase();
+const weekday = dateObj.toLocaleDateString("en-US", { weekday: "long" });
+---
+
+<Card
+    class="h-full flex flex-col p-0 overflow-hidden group relative"
+    hoverEffect={true}
+>
+    <div class="relative h-48 md:h-60 overflow-hidden bg-brand-bg">
+        <div
+            class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all z-10"
+        >
+        </div>
+
+        <div
+            class="absolute top-4 left-4 z-20 bg-brand-surface/90 backdrop-blur border border-white/10 text-center px-3 py-2 rounded"
+        >
+            <span
+                class="block text-xs font-bold text-brand-text-muted uppercase tracking-wider"
+                >{month}</span
+            >
+            <span class="block text-2xl font-heading text-white leading-none"
+                >{day}</span
+            >
+        </div>
+
+        {
+            featured && (
+                <div class="absolute top-4 right-4 z-20">
+                    <Badge label="Featured" variant="solid" />
+                </div>
+            )
+        }
+
+        <div
+            class="w-full h-full bg-brand-surface flex items-center justify-center text-brand-text-muted"
+        >
+            <div
+                class="w-full h-full bg-gradient-to-br from-brand-surface to-brand-bg group-hover:scale-105 transition-transform duration-700 relative"
+            >
+                {
+                    imageData ? (
+                        <Image
+                            src={imageData}
+                            alt={title}
+                            class="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-700"
+                            width={600}
+                            height={400}
+                        />
+                    ) : (
+                        <div class="w-full h-full flex items-center justify-center opacity-30 text-4xl">
+                            ♫
+                        </div>
+                    )
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="p-6 flex flex-col flex-grow relative z-20">
+        <div class="mb-4">
+            <Badge label={genre} variant="outline" class="mb-2" />
+            <h3
+                class="text-2xl font-heading text-white group-hover:text-brand-accent transition-colors mb-1"
+            >
+                {title}
+            </h3>
+            <p
+                class="text-brand-text-secondary text-sm flex items-center gap-2"
+            >
+                <svg
+                    class="w-4 h-4 text-brand-accent pr-1"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    ><path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                    ></path></svg
+                >
+                {weekday} @ {time}
+            </p>
+        </div>
+
+        <div class="mt-auto pt-4 border-t border-white/5">
+            <Button variant="primary" size="sm" class="w-full"
+                >Get Tickets</Button
+            >
+        </div>
+    </div>
+</Card>

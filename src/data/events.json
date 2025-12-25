@@ -1,0 +1,74 @@
+[
+    {
+        "id": "neon-friday",
+        "title": "Neon Nights: DJ K-Rave",
+        "date": "2025-08-15",
+        "time": "10:00 PM",
+        "genre": "Techno / House",
+        "featured": true,
+        "image": "event-neon-nights.webp"
+    },
+    {
+        "id": "saturday-social",
+        "title": "Saturday Social",
+        "date": "2025-08-16",
+        "time": "9:00 PM",
+        "genre": "R&B / Hip Hop",
+        "featured": true,
+        "image": "event-saturday-social.webp"
+    },
+    {
+        "id": "urban-jungle",
+        "title": "Urban Jungle",
+        "date": "2025-08-22",
+        "time": "10:00 PM",
+        "genre": "Drum & Bass",
+        "featured": true,
+        "image": "event-urban-jungle.webp"
+    },
+    {
+        "id": "thursday-live",
+        "title": "Acoustic Thursday",
+        "date": "2025-08-21",
+        "time": "8:00 PM",
+        "genre": "Live Music",
+        "featured": false,
+        "image": "event-default.webp"
+    },
+    {
+        "id": "industry-night",
+        "title": "Industry Night",
+        "date": "2025-08-18",
+        "time": "8:00 PM",
+        "genre": "House",
+        "featured": false,
+        "image": "event-default.webp"
+    },
+    {
+        "id": "retro-rewind",
+        "title": "Retro Rewind",
+        "date": "2025-08-23",
+        "time": "9:00 PM",
+        "genre": "80s / 90s",
+        "featured": false,
+        "image": "event-default.webp"
+    },
+    {
+        "id": "sunday-session",
+        "title": "Sunday Session",
+        "date": "2025-08-24",
+        "time": "4:00 PM",
+        "genre": "Chill / Lo-Fi",
+        "featured": false,
+        "image": "event-default.webp"
+    },
+    {
+        "id": "warehouse-party",
+        "title": "Warehouse Party",
+        "date": "2025-08-29",
+        "time": "10:00 PM",
+        "genre": "Techno",
+        "featured": true,
+        "image": "event-default.webp"
+    }
+]

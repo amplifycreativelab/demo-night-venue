@@ -1,0 +1,66 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import Button from "../components/Button.astro";
+import Card from "../components/Card.astro";
+---
+
+<BaseLayout title="Services | Venue Nights">
+    <section class="py-12 md:py-20">
+        <div class="container mx-auto px-4">
+            <SectionHeader
+                title="Services & Packages"
+                subtitle="More than just a nightclub."
+            />
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <Card class="flex flex-col text-center p-8">
+                    <h3
+                        class="text-2xl font-heading text-white mb-4 uppercase tracking-wide"
+                    >
+                        VIP Bottle Service
+                    </h3>
+                    <p class="text-brand-text-secondary mb-6 flex-grow">
+                        Dedicated booths, personal hostess, and premium spirits.
+                        The ultimate night out.
+                    </p>
+                    <Button href="/bar-night-venue/vip" variant="outline"
+                        >Book Booth</Button
+                    >
+                </Card>
+
+                <Card
+                    class="flex flex-col text-center p-8 border-brand-accent/50"
+                >
+                    <h3
+                        class="text-2xl font-heading text-white mb-4 uppercase tracking-wide"
+                    >
+                        Private Functions
+                    </h3>
+                    <p class="text-brand-text-secondary mb-6 flex-grow">
+                        Full venue hire available Mon-Wed. Private areas
+                        available weekends for 20-50 guests.
+                    </p>
+                    <Button href="/bar-night-venue/contact" variant="primary"
+                        >Enquire Now</Button
+                    >
+                </Card>
+
+                <Card class="flex flex-col text-center p-8">
+                    <h3
+                        class="text-2xl font-heading text-white mb-4 uppercase tracking-wide"
+                    >
+                        Corporate Events
+                    </h3>
+                    <p class="text-brand-text-secondary mb-6 flex-grow">
+                        Product launches, networking drinks, and holiday parties
+                        with AV support.
+                    </p>
+                    <Button href="/bar-night-venue/contact" variant="outline"
+                        >Contact Us</Button
+                    >
+                </Card>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

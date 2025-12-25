@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+---
+
+<BaseLayout title="About Us | Venue Nights">
+    <section class="py-12 md:py-20">
+        <div class="container mx-auto px-4 max-w-4xl text-center">
+            <SectionHeader
+                title="The Story"
+                subtitle="Perth's new home for late night culture."
+            />
+
+            <div class="prose prose-invert prose-lg mx-auto">
+                <p>
+                    Venue Nights wasn't built to be just another bar. It was
+                    designed as an escape. hidden in the heart of Perth's CBD,
+                    we bring together world-class sound, immersive lighting, and
+                    a cocktail program that rivals the world's best.
+                </p>
+                <p>
+                    Whether you're here for the international DJs, the intimate
+                    VIP booths, or just a late-night drink, we promise an
+                    experience you won't forget.
+                </p>
+                <p>
+                    Music is our heartbeat. From House to Techno, R&B to Lo-Fi,
+                    our curation is unmatched.
+                </p>
+            </div>
+        </div>
+    </section>
+</BaseLayout>
