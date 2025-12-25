@@ -16,9 +16,51 @@ const siteBase = import.meta.env.BASE_URL;
 
 import { getImage } from "astro:assets";
 import ogImageSrc from "../assets/images/og-image.webp";
-const optimizedOg = await getImage({src: ogImageSrc, format: 'png'});
-const ogImageUrl = optimizedOg.src; 
+const optimizedOg = await getImage({ src: ogImageSrc, format: "png" });
+const ogImageUrl = optimizedOg.src;
 
+const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "NightClub",
+    name: "Venue Nights",
+    image: ogImageUrl,
+    url: "https://github.com/amplifycreativelab/Night-Venue/",
+    telephone: "0400000000",
+    address: {
+        "@type": "PostalAddress",
+        streetAddress: "123 Murray Street",
+        addressLocality: "Perth",
+        addressRegion: "WA",
+        postalCode: "6000",
+        addressCountry: "AU",
+    },
+    geo: {
+        "@type": "GeoCoordinates",
+        latitude: -31.9505,
+        longitude: 115.8605,
+    },
+    openingHoursSpecification: [
+        {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Thursday"],
+            opens: "20:00",
+            closes: "02:00",
+        },
+        {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Friday", "Saturday"],
+            opens: "21:00",
+            closes: "04:00",
+        },
+        {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Sunday"],
+            opens: "20:00",
+            closes: "00:00",
+        },
+    ],
+    priceRange: "$$",
+};
 ---
 
 <!doctype html>
@@ -27,68 +69,29 @@ const ogImageUrl = optimizedOg.src;
         <meta charset="UTF-8" />
         <meta name="description" content={description} />
         <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/svg+xml" href={`${siteBase}/favicon.svg`} />
+        <link
+            rel="icon"
+            type="image/svg+xml"
+            href={siteBase + "/favicon.svg"}
+        />
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
 
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={Astro.url} />
+        <meta property="og:url" content={Astro.url.href} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={ogImageUrl} />
 
         <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content={Astro.url} />
+        <meta property="twitter:url" content={Astro.url.href} />
         <meta property="twitter:title" content={title} />
         <meta property="twitter:description" content={description} />
         <meta property="twitter:image" content={ogImageUrl} />
 
-        <script type="application/ld+json" define:vars={{ ogImageUrl }}>
-            {
-                "@context": "https://schema.org",
-                "@type": "NightClub",
-                "name": "Venue Nights",
-                "image": ogImageUrl,
-                "url": "https://github.com/amplifycreativelab/Night-Venue/",
-                "telephone": "0400000000",
-                "address": {
-                    "@type": "PostalAddress",
-                    "streetAddress": "123 Murray Street",
-                    "addressLocality": "Perth",
-                    "addressRegion": "WA",
-                    "postalCode": "6000",
-                    "addressCountry": "AU"
-                },
-                "geo": {
-                    "@type": "GeoCoordinates",
-                    "latitude": -31.9505,
-                    "longitude": 115.8605
-                },
-                "openingHoursSpecification": [
-                    {
-                        "@type": "OpeningHoursSpecification",
-                        "dayOfWeek": ["Thursday"],
-                        "opens": "20:00",
-                        "closes": "02:00"
-                    },
-                    {
-                        "@type": "OpeningHoursSpecification",
-                        "dayOfWeek": ["Friday", "Saturday"],
-                        "opens": "21:00",
-                        "closes": "04:00"
-                    },
-                    {
-                        "@type": "OpeningHoursSpecification",
-                        "dayOfWeek": ["Sunday"],
-                        "opens": "20:00",
-                        "closes": "00:00"
-                    }
-                ],
-                "priceRange": "$$"
-            }
-        </script>
+        <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     </head>
     <body
         class="bg-brand-bg text-brand-text font-body min-h-screen flex flex-col"
