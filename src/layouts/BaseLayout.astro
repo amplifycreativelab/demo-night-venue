@@ -4,6 +4,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { getImage } from "astro:assets";
 import ogImageSrc from "../assets/images/og-image.webp";
+import DemoLayout from "./DemoLayout.astro";
 
 interface Props {
     title: string;
@@ -12,55 +13,12 @@ interface Props {
 
 const {
     title,
-    description = "Venue Nights - Perth's Premier Nightlife Destination",
+    description = "Venue Nights - Nightlife concept demo for design and motion",
 } = Astro.props;
 const siteBase = import.meta.env.BASE_URL;
 
 const optimizedOg = await getImage({ src: ogImageSrc, format: "png" });
 const ogImageUrl = optimizedOg.src;
-
-const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "NightClub",
-    name: "Venue Nights",
-    image: ogImageUrl,
-    url: new URL(siteBase, Astro.site).href,
-    telephone: "0400000000",
-    address: {
-        "@type": "PostalAddress",
-        streetAddress: "123 Murray Street",
-        addressLocality: "Perth",
-        addressRegion: "WA",
-        postalCode: "6000",
-        addressCountry: "AU",
-    },
-    geo: {
-        "@type": "GeoCoordinates",
-        latitude: -31.9505,
-        longitude: 115.8605,
-    },
-    openingHoursSpecification: [
-        {
-            "@type": "OpeningHoursSpecification",
-            dayOfWeek: ["Thursday"],
-            opens: "20:00",
-            closes: "02:00",
-        },
-        {
-            "@type": "OpeningHoursSpecification",
-            dayOfWeek: ["Friday", "Saturday"],
-            opens: "21:00",
-            closes: "04:00",
-        },
-        {
-            "@type": "OpeningHoursSpecification",
-            dayOfWeek: ["Sunday"],
-            opens: "20:00",
-            closes: "00:00",
-        },
-    ],
-    priceRange: "$$",
-};
 ---
 
 <!doctype html>
@@ -75,6 +33,7 @@ const jsonLd = {
             href={siteBase + "/favicon.svg"}
         />
         <meta name="generator" content={Astro.generator} />
+        <meta name="robots" content="noindex, nofollow" />
         <title>{title}</title>
 
         <!-- Open Graph / Facebook -->
@@ -91,14 +50,12 @@ const jsonLd = {
         <meta property="twitter:description" content={description} />
         <meta property="twitter:image" content={ogImageUrl} />
 
-        <script
-            type="application/ld+json"
-            set:html={JSON.stringify(jsonLd)}
-        ></script>
+        <!-- Non-indexed portfolio demo: intentionally no schema -->
     </head>
     <body
         class="bg-brand-bg text-brand-text font-body min-h-screen flex flex-col"
     >
+        <DemoLayout>
         <!-- Skip Link -->
         <a
             href="#main-content"
@@ -114,5 +71,6 @@ const jsonLd = {
         </main>
 
         <Footer />
+        </DemoLayout>
     </body>
 </html>
